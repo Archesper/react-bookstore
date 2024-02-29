@@ -1,4 +1,6 @@
-const Navbar = ({ links }) => {
+import CartIcon from '../CartIcon/CartIcon';
+
+const Navbar = ({ links, isShopping }) => {
   const linkItems = links.map((link, index) => (
     <li key={index}>
       <a href="">{link}</a>
@@ -8,6 +10,7 @@ const Navbar = ({ links }) => {
     <>
       <nav>
         <ul>{linkItems}</ul>
+        {isShopping && <CartIcon/>}
       </nav>
     </>
   );
