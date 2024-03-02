@@ -1,16 +1,17 @@
 import CartIcon from '../CartIcon/CartIcon';
+import { Link } from 'react-router-dom';
 
 const Navbar = ({ links, isShopping }) => {
   const linkItems = links.map((link, index) => (
     <li key={index}>
-      <a href="">{link}</a>
+      <Link to={link.toLowerCase()}>{link}</Link>
     </li>
   ));
   return (
     <>
       <nav>
         <ul>{linkItems}</ul>
-        {isShopping && <CartIcon/>}
+        {isShopping ? <CartIcon itemCount={0}/> : ''}
       </nav>
     </>
   );
