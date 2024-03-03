@@ -4,7 +4,7 @@ const CartIcon = ({itemCount}) => {
   return (
     <div className="cart-icon-wrapper">
       <ShoppingCartIcon />
-      <span className="item-count"> {itemCount} </span>
+      <span data-testid="item-count" className="item-count"> {itemCount} </span>
     </div>
   );
 };

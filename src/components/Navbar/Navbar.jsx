@@ -1,7 +1,7 @@
 import CartIcon from '../CartIcon/CartIcon';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ links, isShopping }) => {
+const Navbar = ({ links, isShopping, itemCount }) => {
   const linkItems = links.map((link, index) => (
     <li key={index}>
       <Link to={link.toLowerCase()}>{link}</Link>
@@ -11,7 +11,7 @@ const Navbar = ({ links, isShopping }) => {
     <>
       <nav>
         <ul>{linkItems}</ul>
-        {isShopping ? <CartIcon itemCount={0}/> : ''}
+        {isShopping ? <CartIcon itemCount={itemCount}/> : ''}
       </nav>
     </>
   );
