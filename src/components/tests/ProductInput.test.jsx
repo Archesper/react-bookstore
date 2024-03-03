@@ -6,17 +6,19 @@ import ProductInput from "../ProductInput/ProductInput"
 describe("ProductInput component",  () => {
   it("Transforms into an incrementable input when button is clicked, and calls event handler prop", async () => {
     const user = userEvent.setup();
-    const onClick = vi.fn();
+    const updateCart = vi.fn();
 
-    render(<ProductInput onClick={onClick}/>);
+    render(<ProductInput updateCart={updateCart}/>);
     const component = screen.getByTestId('product-input');
     const button = screen.getByRole('button', {name: /add to cart/i});
 
     await user.click(button);
 
-    expect(onClick).toHaveBeenCalled;
+    expect(updateCart).toHaveBeenCalled;
     expect(button).not.toBeInTheDocument;
-    expect(getByRole(component, "insertion").toBeInTheDocument).and.toHaveAttribute('type', 'number');
+    const input = getByRole(component, "spinbutton");
+    expect(input).toBeInTheDocument;
+    expect(input).toHaveAttribute("type", "number");
     expect(getAllByRole(component, "button").length).toEqual(2);
   })
 } )
