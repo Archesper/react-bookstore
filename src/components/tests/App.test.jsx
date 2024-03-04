@@ -1,5 +1,6 @@
 import { getAllByTestId, getByText, getByRole, render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
+import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import App from "../App";
 import CardWrapper from "../CardWrapper/CardWrapper";
@@ -7,22 +8,13 @@ import CardWrapper from "../CardWrapper/CardWrapper";
 
 describe("UI tests", () => {
   beforeEach(() => {
-    render(<App />);
-    vi.mock("react-router-dom", () => {
-      const mod = vi.importActual("react-router-dom");
-      return {
-        ...mod,
-        useLocation: () => ({ pathname: "/shop" }),
-        Outlet: (context) => <CardWrapper testProps={context}/>,
-        useOutletContext: () => {
-          return {
-            productData: '',
-            onCardClick: '',
-          };
-        },
-        Link: ({ to }) => <a href="">{to}</a>,
-      };
-    });
+    const routes =     [{
+      path: "/",
+      element: <App/>,
+      children: [{path: "/shop", element: <CardWrapper/>}]
+    }];
+    const router = createMemoryRouter(routes, {initialEntries:["/shop"]});
+    render(<RouterProvider router={router} />);
   })
   it("shows 0 cart items right after rendering", () => {
     const cartCount = screen.getByTestId("item-count");
