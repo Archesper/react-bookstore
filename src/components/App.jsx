@@ -46,7 +46,7 @@ function App() {
   return (
     <>
       <Navbar isShopping={isShopping} links={["Home", "Shop"]} itemCount={cartData.reduce((previous, current) => previous+current.quantity, 0)} />
-      <Outlet context={{productData: productData, updateCart: updateCart}}></Outlet>
+      <Outlet context={{productData: productData, updateCart: updateCart, cartData: cartData}}></Outlet>
     </>
   );
 }

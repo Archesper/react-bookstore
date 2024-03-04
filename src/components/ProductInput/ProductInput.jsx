@@ -9,7 +9,7 @@ const ProductInput = ({ updateCart, productData }) => {
       <div className="product-input" data-testid="product-input">
         <button onClick={()=> updateInputValue(inputValue  - 1)}>-</button>
         <input onChange={(e)=> {updateInputValue(e.target.value)}} type="number" value={inputValue} name="cart-count" id="cart-count"/>
-        <button>+</button>
+        <button onClick={()=> updateInputValue(inputValue  + 1)}>+</button>
       </div>
     );
   } else {
