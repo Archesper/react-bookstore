@@ -30,7 +30,6 @@ const Fetcher = () => {
   }, []);
   if (loading) return "Loading...";
   if (error) return "Error!";
-  console.log({...otherProps, productData: data});
   return CardWrapper({...otherProps, productData: data});
 };
 
