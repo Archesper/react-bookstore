@@ -42,10 +42,12 @@ function App() {
     console.log(cartData);
   }
   const { pathname } = useLocation();
-  const isShopping = pathname === "/shop";
+  
+  const routeMap = {"/shop": "shop", "/": "home"};
+  const activeLink = routeMap[pathname];
   return (
     <>
-      <Navbar isShopping={isShopping} links={["Home", "Shop"]} itemCount={cartData.reduce((previous, current) => previous+current.quantity, 0)} />
+      <Navbar activeLink={activeLink} links={["home", "shop", "about us"]} itemCount={cartData.reduce((previous, current) => previous+current.quantity, 0)} />
       <Outlet context={{otherProps:{productData: productData, updateCart: updateCart}, cartData: cartData}}></Outlet>
     </>
   );
