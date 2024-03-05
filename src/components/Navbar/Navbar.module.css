@@ -1,0 +1,39 @@
+.navbar {
+  padding: 12px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  background-color: rgb(248, 233, 205);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links {
+  display: flex;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.links li {
+  padding: 0 8px;
+  text-align: center;
+  border-right: 0.8px solid rgb(184, 184, 184);
+}
+
+.links a {
+  color: black;
+  text-decoration: none;
+
+}
+
+.links a:hover {
+  color: orange;
+}
+
+.links li:last-child  {
+  border: none;
+}
+
+#active {
+  color: orange;
+}
