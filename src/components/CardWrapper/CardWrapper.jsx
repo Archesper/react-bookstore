@@ -1,13 +1,14 @@
 import { useOutletContext } from "react-router-dom";
 import Card from "../Card/Card";
 
-const CardWrapper = () => {
-  let {productData, updateCart} = useOutletContext();
+const CardWrapper = ({productData, updateCart}) => {
   const cards = productData.map((data) => <Card key={data.id} updateCart={updateCart} productData={data}/>);
   return (
-    <div className="cards-wrapper">
-      {cards}
-    </div>
+    <main>
+      <div className="cards-wrapper">
+        {cards}
+      </div>
+    </main>
   );
 } 
 
