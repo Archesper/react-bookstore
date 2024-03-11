@@ -1,10 +1,11 @@
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import styles from "./CartIcon.module.css"
 
 const CartIcon = ({itemCount}) => {
   return (
-    <div className="cart-icon-wrapper">
-      <ShoppingCartIcon />
-      <span data-testid="item-count" className="item-count"> {itemCount} </span>
+    <div className={styles["cart-icon-wrapper"]}>
+        <ShoppingCartIcon />
+        <div data-testid="item-count" className={styles["item-count"]}> {itemCount} </div>
     </div>
   );
 };

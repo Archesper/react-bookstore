@@ -1,0 +1,27 @@
+.cart-icon-wrapper {
+  position: absolute;
+  right: 24px;
+}
+
+.cart-icon-wrapper svg {
+  width: 32px;
+  height: 32px;
+}
+
+.item-count {
+  color: white;
+  background-color: orange;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  border-radius: 50%;
+  top: 0;
+  left: 22px;
+  letter-spacing: initial;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
