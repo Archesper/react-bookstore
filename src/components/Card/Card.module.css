@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding: 8px;
+}
+
+.frame {
+  border: 2px solid #EAE8DF;
+  padding: 16px;
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.image {
+  height: 240px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #393280;
+}
+
+.description {
+  font-size: 14px;
+  color: #888888;
+}
+
+.price {
+  font-size: 22px;
+  color: #ED553B;
+  font-weight: bold;
+}
+
+.price:after {
+  content: "$";
+}
