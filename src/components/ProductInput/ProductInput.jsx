@@ -8,9 +8,9 @@ const ProductInput = ({ updateCart, productData }) => {
   if (inCart) {
     return (
       <div className={styles["product-input"]} data-testid="product-input">
-        <button className={styles["input-btn"]} onClick={()=> updateInputValue(inputValue  - 1)}>-</button>
+        <button className={styles["input-btn"]} onClick={()=> updateInputValue(parseInt(inputValue)  - 1)}>-</button>
         <input onChange={(e)=> {updateInputValue(e.target.value)}} type="number" value={inputValue} name="cart-count" id="cart-count"/>
-        <button className={styles["input-btn"]} onClick={()=> updateInputValue(inputValue  + 1)}>+</button>
+        <button className={styles["input-btn"]} onClick={()=> updateInputValue(parseInt(inputValue)  + 1)}>+</button>
       </div>
     );
   } else {

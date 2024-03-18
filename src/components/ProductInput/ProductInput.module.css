@@ -39,7 +39,15 @@
 }
 
 .product-input input {
-  width: 50%;
+  width: 20%;
   text-align: center;
   border: 2px solid #EAE8DF;
+
 }
+
+.product-input input::-webkit-outer-spin-button,
+.product-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
