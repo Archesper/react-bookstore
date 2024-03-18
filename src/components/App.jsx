@@ -4,22 +4,6 @@ import Navbar from "./Navbar/Navbar";
 
 function App() {
   const [cartData, setCartData] = useState([]);
-  const [productData, setProductData] = useState([
-    {
-      id: 1,
-      image: "https://via.placeholder.com/200/92c952",
-      title: "Lorem Ipsum",
-      description: "Lorem Ipsumly lorem ipsum",
-      price: 70,
-    },
-    {
-      id: 2,
-      image: "https://via.placeholder.com/200/92c952",
-      title: "Lorem Ipsum",
-      description: "Lorem Ipsumly lorem ipsum",
-      price: 75,
-    },
-  ]);
   const updateCart = (item, quantity) => {
     const itemToUpdate = cartData.find((cartItem)=> cartItem.id === item.id);
     if(itemToUpdate) {
@@ -33,7 +17,6 @@ function App() {
           }
         }))
       } else {
-        console.log("HERE");
         setCartData(cartData.filter((cartItem) => cartItem.id !== itemToUpdate.id));
       }
     } else {
@@ -48,7 +31,7 @@ function App() {
   return (
     <>
       <Navbar activeLink={activeLink} links={["home", "shop", "about us"]} itemCount={cartData.reduce((previous, current) => previous+current.quantity, 0)} />
-      <Outlet context={{otherProps:{productData: productData, updateCart: updateCart}, cartData: cartData}}></Outlet>
+      <Outlet context={{updateCart: updateCart, cartData: cartData}}></Outlet>
     </>
   );
 }
