@@ -10,7 +10,7 @@ import CardWrapper from "../CardWrapper/CardWrapper";
 describe("UI tests", () => {
   beforeEach(() => {
     const MockFetcher = () => {
-      const {otherProps} = useOutletContext();
+      const {updateCart} = useOutletContext();
       const data = [
         {
           id: 1,
@@ -27,7 +27,7 @@ describe("UI tests", () => {
           price: 75,
         },
       ];
-      return <CardWrapper {...{...otherProps, productData: data}}/>
+      return <CardWrapper  updateCart={updateCart} productData={data}/>
     }
     const routes =     [{
       path: "/",
