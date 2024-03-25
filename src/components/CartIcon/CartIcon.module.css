@@ -8,6 +8,23 @@
   height: 32px;
 }
 
+.button {
+  background: none;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button:hover {
+  background-color: rgb(231, 157, 157);
+}
+
 .item-count {
   color: white;
   background-color: #ED553B;

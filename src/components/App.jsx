@@ -4,6 +4,7 @@ import Navbar from "./Navbar/Navbar";
 
 function App() {
   const [cartData, setCartData] = useState([]);
+  const [modalActive, setModalActive] = useState(false);
   const updateCart = (item, quantity) => {
     const itemToUpdate = cartData.find((cartItem)=> cartItem.id === item.id);
     if(itemToUpdate) {
@@ -30,8 +31,8 @@ function App() {
   const activeLink = routeMap[pathname];
   return (
     <>
-      <Navbar activeLink={activeLink} links={["home", "shop", "about us"]} itemCount={cartData.reduce((previous, current) => previous+current.quantity, 0)} />
-      <Outlet context={{updateCart: updateCart, cartData: cartData}}></Outlet>
+      <Navbar onIconClick={()=> setModalActive(!modalActive)} activeLink={activeLink} links={["home", "shop", "about us"]} itemCount={cartData.reduce((previous, current) => previous+current.quantity, 0)} />
+      <Outlet context={{updateCart: updateCart, cartData: cartData, isActive: modalActive}}></Outlet>
     </>
   );
 }
