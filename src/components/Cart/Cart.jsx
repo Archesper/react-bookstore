@@ -1,21 +1,35 @@
 import { useOutletContext } from "react-router-dom";
-import styles from "./Cart.module.css"
-import modalStyles from "../Modal/Modal.module.css"
-import cover from "../../../public/cover.webp"
+import styles from "./Cart.module.css";
+import modalStyles from "../Modal/Modal.module.css";
+import cover from "../../../public/cover.webp";
 const Cart = () => {
   const { cartData } = useOutletContext();
-  const totalPrice = cartData.reduce((previous, current) => previous + current.price * current.quantity, 0);
+  const totalPrice = cartData.reduce(
+    (previous, current) => previous + current.price * current.quantity,
+    0
+  );
   const cartItems = cartData.map((cartItem) => (
-    <div key={cartItem.id} className="cart-item" data-testid="cart-item">
-      <img src={cover} alt={cartItem.description} />
-      <h3>{cartItem.title}</h3>
-      <p>{cartItem.price}</p>
+    <div
+      key={cartItem.id}
+      className={styles["cart-item"]}
+      data-testid="cart-item"
+    >
+      <div className={styles.frame}>
+        <div className={styles["item-count"]}>{cartItem.quantity}</div>{" "}
+        <img src={cover} alt={cartItem.description} />
+      </div>
+      <h3 className={styles.title}>{cartItem.title}</h3>
+      <p className={styles.price}>{cartItem.price * cartItem.quantity}</p>
     </div>
   ));
   return (
     <div className={styles.cart + " " + modalStyles.cart}>
-      {cartItems}
-      <div><span>Price:</span> <span data-testid="price">{totalPrice}</span></div>
+      <h1 className={styles["cart-title"]}>Cart</h1>
+      <div className={styles["cart-items"]}>{cartItems}</div>
+      <div className={styles.total}>
+        <span>Total:</span> <span data-testid="price">$ {totalPrice}</span>
+      </div>
+      <button className={styles["checkout-btn"]}>Checkout</button>
     </div>
   );
 };

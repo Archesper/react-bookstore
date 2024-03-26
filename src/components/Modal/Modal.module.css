@@ -5,12 +5,29 @@
   left: 0;
   width: 100%;
   height: 100%;
-  transition: all .3s ease-in-out;
   overflow-x: hidden;
+  transition: all .3s ease-in-out;
 }
 
 .active-modal {
   visibility: visible;
+}
+
+.active-modal::before {
+  backdrop-filter: blur(3px);
+}
+
+/* This element was added because setting backdrop-filter on the parent modal
+  broke the position: fixed cart */
+.backdrop {
+  transition: all .3s ease-in-out;
+  backdrop-filter: blur(0);
+  background-color: transparent;
+  width: 100vw;
+  height: 100%;
+}
+
+.active-modal .backdrop {
   backdrop-filter: blur(3px);
   background-color: #000000b3;
 }

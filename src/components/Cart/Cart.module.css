@@ -1,12 +1,99 @@
 .cart {
-  position: absolute;
+  position: fixed !important;
+  z-index: 10;
   top: 0;
   right: 0;
   background-color: white;
-  height: 100%;
+  height: 100vh;
+  width: 25vw;
+  display: flex;
+  flex-direction: column;
+}
 
+.cart-items {
+  overflow-y: auto;
+  height: 75%;
+  margin: 0 12px;
+}
+
+.cart-title {
+  font-size: 32px;
+  font-weight: bold;
+  background-color: #fbecd0;
+  color:  #ED553B;
+  padding: 12px;
+  margin-bottom: 10px;
 }
 
 .cart img {
-  height: 140px;
+  height: 80px;
+}
+
+.title {
+  composes: title from "../Card/Card.module.css";
+  font-size: 14px !important;
+  align-self: end;
+}
+
+.price {
+  composes: price from "../Card/Card.module.css";
+  font-size: 16px !important;
+}
+
+.frame {
+  composes: frame from "../Card/Card.module.css";
+  grid-row: span 2;
+  padding: 8px !important;
+  position: relative;
+  
+}
+
+.item-count {
+  composes: item-count from "../CartIcon/CartIcon.module.css";
+  right: -8px;
+  top: -8px !important;
+  left: initial !important;
+}
+
+
+.cart-item {
+  display: grid;
+  justify-items: center;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px 0;
+  padding: 12px 6px;
+  margin: 10px auto;
+  border: 2px solid rgb(197, 197, 197);
+  border-radius: 10px;
+  width: 60%;
+}
+
+.total {
+  display: flex;
+  font-size: 20px;
+  font-weight: 600;
+  justify-content: space-between;
+  padding: 8px 24px;
+  border-top: 2px solid rgb(197, 197, 197);
+}
+
+.checkout-btn {
+  font-size: 20px;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  padding: 12px;
+  margin: 8px auto;
+  width: 70%;
+  border-radius: 4px;
+  background-color: #fbecd0;
+  color:  #ED553B;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.checkout-btn:hover {
+  color: #fbecd0;
+  background-color:  #ED553B;
 }

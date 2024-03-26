@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-button:hover {
+.button:hover {
   background-color: rgb(231, 157, 157);
 }
 

@@ -27,10 +27,6 @@ body {
   position: relative;
 }
 
-#root {
-  height: 100%;
-}
-
 * {
   box-sizing: border-box;
   font: inherit;
