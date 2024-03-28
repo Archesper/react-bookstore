@@ -47,6 +47,6 @@ describe("Cart component tests", () => {
   it("renders the correct price", () => {
     const price = screen.getByTestId("price");
 
-    expect(price).toHaveTextContent(/^285$/);
+    expect(price).toHaveTextContent(/^\$ 285$/);
   });
 });
