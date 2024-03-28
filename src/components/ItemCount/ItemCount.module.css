@@ -1,0 +1,17 @@
+.item-count {
+  color: white;
+  background-color: #ED553B;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  border-radius: 50%;
+  letter-spacing: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overflow {
+  font-size: 9px;
+  font-weight: 600;
+}

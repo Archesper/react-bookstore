@@ -49,10 +49,9 @@
 }
 
 .item-count {
-  composes: item-count from "../CartIcon/CartIcon.module.css";
+  position: absolute;
   right: -8px;
-  top: -8px !important;
-  left: initial !important;
+  top: -8px;
 }
 
 

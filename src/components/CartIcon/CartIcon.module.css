@@ -27,19 +27,9 @@
 }
 
 .item-count {
-  color: white;
-  background-color: #ED553B;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  border-radius: 50%;
   top: 0;
   left: 22px;
-  letter-spacing: initial;
   position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .overflow {

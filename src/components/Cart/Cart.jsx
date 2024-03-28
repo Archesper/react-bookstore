@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import styles from "./Cart.module.css";
 import modalStyles from "../Modal/Modal.module.css";
 import cover from "../../../public/cover.webp";
+import ItemCount from "../ItemCount/ItemCount";
 const Cart = () => {
   const { cartData } = useOutletContext();
   const totalPrice = cartData.reduce(
@@ -15,7 +16,7 @@ const Cart = () => {
       data-testid="cart-item"
     >
       <div className={styles.frame}>
-        <div className={styles["item-count"]}>{cartItem.quantity}</div>{" "}
+        <ItemCount className={styles["item-count"]} count={cartItem.quantity}/>
         <img src={cover} alt={cartItem.description} />
       </div>
       <h3 className={styles.title}>{cartItem.title}</h3>
