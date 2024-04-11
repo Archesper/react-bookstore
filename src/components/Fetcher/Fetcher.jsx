@@ -2,88 +2,41 @@ import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import CardWrapper from "../CardWrapper/CardWrapper";
 
+
 const Fetcher = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
   const {updateCart} = useOutletContext();
+  const f = async () => {
+    const data = await fetchData();
+    setData(data);
+    setLoading(false);
+  }
   useEffect(() => {
-    setTimeout(() => {
+    const fetchData = async () => {
+      const requestUrl = (author, count) => `https://openlibrary.org/search.json?q=author:${author} language:eng&fields=key,title,author_name,editions,cover_i&limit=${count}`
+      const authors = ["colleen hoover", "j k rowling", "john green", "stephen king", "leigh bardugo", "khaled hosseini", "tolkien"];
+      const data = [];
+      for (const author of authors) {
+        const response = await fetch(requestUrl(author, 5));
+        const json = await response.json();
+        if (json.numFound > 0) {
+          json.docs.forEach((work) => {
+            const id = work.editions.docs[0].key.split("/").slice(-1);
+            const image = `https://covers.openlibrary.org/b/id/${work.editions.docs[0].cover_i}-L.jpg`
+            const title = work.editions.docs[0].title;
+            const description = work.author_name[0];
+            const price = 70;
+            data.push({id, title, image, description, price});
+          })
+        }
+      }
+      setData(data);
       setLoading(false);
-      setData([
-        {
-          id: 1,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 70,
-        },
-        {
-          id: 2,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 75,
-        },
-        {
-          id: 3,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 70,
-        },
-        {
-          id: 4,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 75,
-        },
-        {
-          id: 5,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 70,
-        },
-        {
-          id: 6,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 75,
-        },
-        {
-          id: 7,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 70,
-        },
-        {
-          id: 8,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 75,
-        },
-        {
-          id: 9,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 70,
-        },
-        {
-          id: 10,
-          image: "https://via.placeholder.com/200/92c952",
-          title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
-          price: 75,
-        },
-      ]);
-    }, 3000);
-  }, []);
+    }
+    fetchData();
+  }, [])
   if (loading) return "Loading...";
   if (error) return "Error!";
   return CardWrapper({updateCart: updateCart, productData: data});

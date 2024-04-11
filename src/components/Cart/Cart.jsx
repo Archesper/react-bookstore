@@ -17,7 +17,7 @@ const Cart = () => {
     >
       <div className={styles.frame}>
         <ItemCount className={styles["item-count"]} count={cartItem.quantity}/>
-        <img src={cover} alt={cartItem.description} />
+        <img src={cartItem.image} alt={cartItem.description} />
       </div>
       <h3 className={styles.title}>{cartItem.title}</h3>
       <p className={styles.price}>{cartItem.price * cartItem.quantity}</p>
