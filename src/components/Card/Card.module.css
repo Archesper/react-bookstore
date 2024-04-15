@@ -6,7 +6,6 @@
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
-
 }
 
 .frame {
@@ -25,8 +24,14 @@
 
 .title {
   font-size: 18px;
+  padding: 2px;
   font-weight: 600;
   color: #393280;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 250px;
+  text-align: center;
 }
 
 .description {

@@ -34,6 +34,7 @@
   composes: title from "../Card/Card.module.css";
   font-size: 14px !important;
   align-self: end;
+  width: 80%;
 }
 
 .price {
@@ -46,7 +47,6 @@
   grid-row: span 2;
   padding: 8px !important;
   position: relative;
-  
 }
 
 .item-count {
@@ -66,7 +66,7 @@
   margin: 10px auto;
   border: 2px solid rgb(197, 197, 197);
   border-radius: 10px;
-  width: 60%;
+  width: 70%;
 }
 
 .total {
