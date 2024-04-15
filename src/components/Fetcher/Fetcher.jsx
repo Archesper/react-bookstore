@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import CardWrapper from "../CardWrapper/CardWrapper";
+import no_cover_found from "../../../public/no_cover_found.png"
 
 const Fetcher = () => {
   const [loading, setLoading] = useState(true);
@@ -38,7 +39,8 @@ const Fetcher = () => {
         if (json.numFound > 0) {
           json.docs.forEach((work) => {
             const id = work.editions.docs[0].key.split("/").slice(-1);
-            const image = `https://covers.openlibrary.org/b/id/${work.editions.docs[0].cover_i}-L.jpg`;
+            const cover_i = work.editions.docs[0].cover_i;
+            const image = cover_i ? `https://covers.openlibrary.org/b/id/${cover_i}-L.jpg` : no_cover_found;
             const title = work.editions.docs[0].title;
             const description = work.author_name[0];
             const price = 70;
