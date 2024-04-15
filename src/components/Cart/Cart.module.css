@@ -33,8 +33,7 @@
 .title {
   composes: title from "../Card/Card.module.css";
   font-size: 14px !important;
-  align-self: end;
-  width: 80%;
+  width: 80% !important;
 }
 
 .price {
@@ -55,18 +54,42 @@
   top: -8px;
 }
 
+.product-input {
+  grid-column: 2;
+  align-items: center;
+}
+
+.product-input button {
+  width: 18px;
+  height: 18px;
+  padding: 3px;
+}
+
+.product-input input {
+  height: 18px !important;
+  width: 40%;
+}
 
 .cart-item {
   display: grid;
-  justify-items: center;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr);
   grid-template-rows: 1fr 1fr;
-  gap: 10px 0;
   padding: 12px 6px;
   margin: 10px auto;
   border: 2px solid rgb(197, 197, 197);
   border-radius: 10px;
   width: 70%;
+}
+
+.cart-item-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  /* This is a somewhat hacky fix to add a bit of margin before the book title
+  As adding margin-top seemed to stretch the whole grid */
+  height: calc(100% - 8px);
+  align-self: end;
 }
 
 .total {

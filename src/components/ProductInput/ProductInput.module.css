@@ -40,9 +40,9 @@
 
 .product-input input {
   width: 20%;
+  height: 24px;
   text-align: center;
   border: 2px solid #EAE8DF;
-
 }
 
 .product-input input::-webkit-outer-spin-button,

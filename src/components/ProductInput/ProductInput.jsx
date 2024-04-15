@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styles from "./ProductInput.module.css";
 
-const ProductInput = ({ updateCart, productData }) => {
-  const [inCart, setInCart] = useState(false);
-  const [inputValue, setInputValue] = useState(0);
+const ProductInput = ({ updateCart, productData, quantity = 0, className = '' }) => {
+  const [inCart, setInCart] = useState(quantity > 0);
+  const [inputValue, setInputValue] = useState(quantity);
   const updateInputValue = (value) => {
     if (parseInt(value) === 0) {
       setInCart(false);
@@ -14,7 +14,7 @@ const ProductInput = ({ updateCart, productData }) => {
   };
   if (inCart) {
     return (
-      <div className={styles["product-input"]} data-testid="product-input">
+      <div className={styles["product-input"] + " " + className} data-testid="product-input">
         <button
           className={styles["input-btn"]}
           onClick={() => updateInputValue(parseInt(inputValue) - 1)}
