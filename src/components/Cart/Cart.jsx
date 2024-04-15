@@ -1,7 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import styles from "./Cart.module.css";
 import modalStyles from "../Modal/Modal.module.css";
-import cover from "../../../public/cover.webp";
 import ItemCount from "../ItemCount/ItemCount";
 const Cart = () => {
   const { cartData } = useOutletContext();

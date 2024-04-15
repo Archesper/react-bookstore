@@ -1,6 +1,5 @@
 import ProductInput from "../ProductInput/ProductInput";
 import styles from "./Card.module.css";
-import cover from "../../../public/cover.webp"
 
 const Card = ({productData, updateCart}) => {
   return (
