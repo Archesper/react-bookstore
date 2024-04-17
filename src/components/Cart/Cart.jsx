@@ -3,8 +3,9 @@ import styles from "./Cart.module.css";
 import modalStyles from "../Modal/Modal.module.css";
 import ItemCount from "../ItemCount/ItemCount";
 import ProductInput from "../ProductInput/ProductInput";
+import CloseIcon from '@mui/icons-material/Close';
 const Cart = () => {
-  const { cartData, updateCart } = useOutletContext();
+  const { cartData, updateCart, toggleIsActive } = useOutletContext();
   const totalPrice = cartData.reduce(
     (previous, current) => previous + current.price * current.quantity,
     0
@@ -28,7 +29,7 @@ const Cart = () => {
   ));
   return (
     <div className={styles.cart + " " + modalStyles.cart}>
-      <h1 className={styles["cart-title"]}>Cart</h1>
+      <h1 className={styles["cart-title"]}>Cart <CloseIcon onClick={() => toggleIsActive()}></CloseIcon></h1>
       <div className={styles["cart-items"]}>{cartItems}</div>
       <div className={styles.total}>
         <span>Total:</span> <span data-testid="price">$ {totalPrice}</span>

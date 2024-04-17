@@ -23,6 +23,20 @@
   color:  #ED553B;
   padding: 12px;
   margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cart-title svg {
+  margin-left: auto;
+  width: 28px;
+  height: 28px;
+  transition: transform ease-in-out .5s;
+}
+
+.cart-title svg:hover {
+  cursor: pointer;
+  transform: rotateZ(180deg);
 }
 
 .cart img {
