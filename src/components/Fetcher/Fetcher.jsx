@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
-import CardWrapper from "../CardWrapper/CardWrapper";
 import no_cover_found from "../../../public/no_cover_found.png"
-import Modal from "../Modal/Modal";
+import CardWrapper from "../CardWrapper/CardWrapper";
 
 const Fetcher = ({setProductData, productData}) => {
   const [loading, setLoading] = useState(!productData.length);
@@ -52,7 +50,7 @@ const Fetcher = ({setProductData, productData}) => {
     };
     fetchData();
   }, []);
-  if (loading) return <Modal isActive={true}/>;
+  if (loading) return <CardWrapper isLoading={true}/>;
   if (error) return "Error!";
 };
 
