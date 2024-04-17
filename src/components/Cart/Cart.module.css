@@ -120,3 +120,48 @@
   color: #fbecd0;
   background-color:  #ED553B;
 }
+
+@media screen and (max-width: 1100px) {
+  .cart {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .cart {
+    width: 40vw;
+  }
+  .cart img {
+    width: 70px;
+    height: 100px;
+  }
+  .cart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .cart-item-header {
+    align-self: initial;
+    gap: 5px;
+    width: 100%;
+  }
+  .title {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .cart {
+    width: 100vw;
+  }
+  .cart-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    justify-items: center;
+  }
+  .cart-item {
+
+    height: fit-content;
+  }
+}
