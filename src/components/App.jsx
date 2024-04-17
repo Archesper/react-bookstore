@@ -45,18 +45,20 @@ function App() {
           0
         )}
       />
-      <Outlet
-        context={{
-          updateCart: updateCart,
-          cartData: cartData,
-          productData: productData,
-          setProductData: (data) => setProductData(data),
-          isActive: modalActive,
-          toggleIsActive: () => {
-            setModalActive(!modalActive);
-          },
-        }}
-      ></Outlet>
+      <main>
+        <Outlet
+          context={{
+            updateCart: updateCart,
+            cartData: cartData,
+            productData: productData,
+            setProductData: (data) => setProductData(data),
+            isActive: modalActive,
+            toggleIsActive: () => {
+              setModalActive(!modalActive);
+            },
+          }}
+        ></Outlet>
+      </main>
     </>
   );
 }

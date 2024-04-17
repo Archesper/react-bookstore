@@ -25,6 +25,11 @@
 body {
   font-family: Inter, sans-serif;
   position: relative;
+  min-height: 100vh;
+}
+
+main {
+  padding-top: 50px;
 }
 
 * {

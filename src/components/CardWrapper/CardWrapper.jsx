@@ -6,11 +6,9 @@ import { useOutletContext } from "react-router-dom";
 const CardWrapper = ({productData, updateCart}) => {
   const cards = productData.map((data) => <Card key={data.id} updateCart={updateCart} productData={data}/>);
   return (
-    <main>
       <div className={styles["card-wrapper"]}>
         {cards}
       </div>
-    </main>
   );
 } 
 
