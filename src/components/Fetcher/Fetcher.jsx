@@ -2,18 +2,17 @@ import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import CardWrapper from "../CardWrapper/CardWrapper";
 import no_cover_found from "../../../public/no_cover_found.png"
+import Modal from "../Modal/Modal";
 
-const Fetcher = () => {
-  const [loading, setLoading] = useState(true);
+const Fetcher = ({setProductData, productData}) => {
+  const [loading, setLoading] = useState(!productData.length);
+  console.log(loading);
   const [error, setError] = useState(null);
-  const [data, setData] = useState(null);
-  const { updateCart } = useOutletContext();
-  const f = async () => {
-    const data = await fetchData();
-    setData(data);
-    setLoading(false);
-  };
+
   useEffect(() => {
+    if (!loading) {
+      return;
+    }
     const fetchData = async () => {
       const requestUrl = (author, count) =>
         `https://openlibrary.org/search.json?q=author:${author} language:eng&fields=key,title,author_name,editions,cover_i&limit=${count}`;
@@ -49,14 +48,12 @@ const Fetcher = () => {
         }
       }
       const shuffledData = data.sort(() => Math.random() - 0.5);
-      setData(shuffledData);
-      setLoading(false);
+      setProductData(shuffledData);
     };
     fetchData();
   }, []);
-  if (loading) return "Loading...";
+  if (loading) return <Modal isActive={true}/>;
   if (error) return "Error!";
-  return CardWrapper({ updateCart: updateCart, productData: data });
 };
 
 export default Fetcher;

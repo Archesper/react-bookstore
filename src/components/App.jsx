@@ -4,6 +4,7 @@ import Navbar from "./Navbar/Navbar";
 
 function App() {
   const [cartData, setCartData] = useState([]);
+  const [productData, setProductData] = useState([]);
   const [modalActive, setModalActive] = useState(false);
   const updateCart = (item, quantity) => {
     const itemToUpdate = cartData.find((cartItem) => cartItem.id === item.id);
@@ -48,6 +49,8 @@ function App() {
         context={{
           updateCart: updateCart,
           cartData: cartData,
+          productData: productData,
+          setProductData: (data) => setProductData(data),
           isActive: modalActive,
           toggleIsActive: () => {
             setModalActive(!modalActive);
