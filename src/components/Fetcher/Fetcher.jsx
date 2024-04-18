@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import no_cover_found from "../../../public/no_cover_found.png"
+import no_cover_found from "../../assets/images/no_cover_found.png"
 import CardWrapper from "../CardWrapper/CardWrapper";
 
 const Fetcher = ({setProductData, productData}) => {
