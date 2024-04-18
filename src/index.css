@@ -28,10 +28,6 @@ body {
   min-height: 100vh;
 }
 
-main {
-  padding-top: 50px;
-}
-
 * {
   box-sizing: border-box;
   font: inherit;
