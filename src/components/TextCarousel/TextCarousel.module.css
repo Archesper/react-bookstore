@@ -1,0 +1,26 @@
+.paragraph {
+  margin-top: 12px;
+  font-size: 18px;
+  line-height: 1.25;
+  color: #393280;
+  min-width: 40vw;
+  display: inline-block;
+}
+
+.carousel-frame {
+  width: 40vw;
+  overflow: hidden;
+}
+
+.carousel {
+  display: flex;
+  transition: transform ease-in 0.5s;
+}
+
+.paragraph:first-child {
+  color: red;
+}
+
+.paragraph:nth-child(2) {
+  color: green;
+}
