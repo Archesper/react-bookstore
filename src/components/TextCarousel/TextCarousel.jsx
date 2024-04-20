@@ -14,14 +14,14 @@ const TextCarousel = ({ paragraphs }) => {
     <p className={styles.paragraph}>{paragraph}</p>
   );
   useEffect(() => {
-    const interval = setInterval((() => {
+    const interval = setTimeout((() => {
       if (activeId !== carouselCount - 1) {
         setActiveId(activeId + 1);
       } else {
         setActiveId(0);
       }
     }), 4000);
-    return () => clearInterval(interval);
+    return () => clearTimeout(interval);
   }, [activeId])
   return <div className={styles["carousel-frame"]}>
     <div style={transformStyle} className={styles.carousel}>{paragraphNodes}</div>
