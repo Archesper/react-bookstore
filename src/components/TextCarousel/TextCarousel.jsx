@@ -5,27 +5,38 @@ const TextCarousel = ({ paragraphs }) => {
   const carouselCount = paragraphs.length;
   const [activeId, setActiveId] = useState(0);
   const paragraphWidth = 40;
-  const carouselOffset = -paragraphWidth*activeId;
+  const carouselOffset = -paragraphWidth * activeId;
   const transformStyle = {
-    transform: `translateX(${carouselOffset}vw)`
+    transform: `translateX(${carouselOffset}vw)`,
   };
   console.log(transformStyle);
-  const paragraphNodes = paragraphs.map((paragraph, index) => 
+  const paragraphNodes = paragraphs.map((paragraph, index) => (
     <p className={styles.paragraph}>{paragraph}</p>
-  );
+  ));
   useEffect(() => {
-    const interval = setTimeout((() => {
+    const interval = setTimeout(() => {
       if (activeId !== carouselCount - 1) {
         setActiveId(activeId + 1);
       } else {
         setActiveId(0);
       }
-    }), 4000);
+    }, 4000);
     return () => clearTimeout(interval);
-  }, [activeId])
-  return <div className={styles["carousel-frame"]}>
-    <div style={transformStyle} className={styles.carousel}>{paragraphNodes}</div>
-  </div>;
+  }, [activeId]);
+  return (
+    <div className={styles["carousel-frame"]}>
+      <div style={transformStyle} className={styles.carousel}>
+        {paragraphNodes}
+      </div>
+      <div className={styles["carousel-controls"]}>
+        {paragraphs.map((paragraph, index) => (
+          <div className={styles["carousel-control"] + (activeId === index ? ` ${styles["active-control"]}` : "")} onClick={() => setActiveId(index)}>
+            <div className={styles["control-inner-ring"]}></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default TextCarousel;
