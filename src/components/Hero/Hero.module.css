@@ -42,7 +42,7 @@
 .button {
   color: rgb(37, 37, 57);
   font-size: 18px;
-  margin-top: 8px;
+  margin-top: 14px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -57,4 +57,16 @@
 
 .button:hover {
   color: #ED553B;
+}
+
+@media screen and (max-width: 400px) {
+  .hero-header {
+    text-align: center;
+  }
+  .info {
+    padding: 12px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

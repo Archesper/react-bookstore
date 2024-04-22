@@ -61,5 +61,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  
+  .carousel-frame {
+    width: max(200px, 40vw);
+  }
 }
