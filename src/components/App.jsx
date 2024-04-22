@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
+import Hero from "./Hero/Hero";
 
 function App() {
   const [cartData, setCartData] = useState([]);
@@ -46,6 +47,7 @@ function App() {
         )}
       />
       <main>
+        {pathname === "/" && <Hero/>}
         <Outlet
           context={{
             updateCart: updateCart,
