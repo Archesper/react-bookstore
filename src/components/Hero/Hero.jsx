@@ -2,9 +2,10 @@ import styles from "./Hero.module.css";
 import heroBackground from "../../assets/images/hero-background.jpg";
 import TextCarousel from "../TextCarousel/TextCarousel";
 import EastIcon from "@mui/icons-material/East";
+import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
-  console.log(heroBackground);
+  const navigate = useNavigate();
   return (
     <div className={styles.hero}>
       <div className={styles.info}>
@@ -17,7 +18,7 @@ const Hero = () => {
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut magna velit eleifend. Amet, quis urna, a eu.",
           ]}
         />
-        <button className={styles.button}>
+        <button onClick={() => navigate("/shop")} className={styles.button}>
           Shop Now <EastIcon />
         </button>
       </div>
