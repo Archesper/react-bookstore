@@ -2,9 +2,18 @@
   margin-top: 12px;
   font-size: 18px;
   line-height: 1.25;
-  color: #393280;
+  color: #ffe4e4;
   min-width: 40vw;
   display: inline-block;
+}
+
+.paragraph a {
+  color: #ED553B;
+  text-decoration: none;
+}
+
+.paragraph a:hover {
+  text-decoration: underline;
 }
 
 .carousel-frame {
@@ -44,17 +53,11 @@
 }
 
 .active-control {
-  border: 1px solid green;
+  border: 1px solid  #ED553B;
 }
 
 .active-control .control-inner-ring {
-  background-color: rgb(54, 208, 54);
+  background-color: #ED553B;
 }
 
-.paragraph:first-child {
-  color: red;
-}
 
-.paragraph:nth-child(2) {
-  color: green;
-}
