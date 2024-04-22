@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./TextCarousel.module.css";
 
 const TextCarousel = ({ paragraphs }) => {
-  const firstNode = useRef(null);
   const paragraphNodes = paragraphs.map((paragraph, index) => (
-    <p {...(index === 0 ? {ref: firstNode} : {})} dangerouslySetInnerHTML={{__html: paragraph}} className={styles.paragraph}></p>
+    <p dangerouslySetInnerHTML={{__html: paragraph}} className={styles.paragraph}></p>
   ));
+  const firstNode = useRef(paragraphNodes[0]);
   const carouselCount = paragraphs.length;
   const [activeId, setActiveId] = useState(0);
   const paragraphWidth =firstNode.current.offsetWidth;
