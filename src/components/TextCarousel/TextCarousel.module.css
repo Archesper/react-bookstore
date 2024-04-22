@@ -3,7 +3,7 @@
   font-size: 18px;
   line-height: 1.25;
   color: #ffe4e4;
-  min-width: 40vw;
+  min-width: 100%;
   display: inline-block;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .carousel-frame {
-  width: 40vw;
+  width: max(300px, 40vw);
   overflow: hidden;
 }
 
@@ -60,4 +60,6 @@
   background-color: #ED553B;
 }
 
-
+@media screen and (max-width: 400px) {
+  
+}

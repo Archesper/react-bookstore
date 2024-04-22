@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./TextCarousel.module.css";
 
 const TextCarousel = ({ paragraphs }) => {
+  const firstNode = useRef(null);
+  const paragraphNodes = paragraphs.map((paragraph, index) => (
+    <p {...(index === 0 ? {ref: firstNode} : {})} dangerouslySetInnerHTML={{__html: paragraph}} className={styles.paragraph}></p>
+  ));
   const carouselCount = paragraphs.length;
   const [activeId, setActiveId] = useState(0);
-  const paragraphWidth = 40;
+  const paragraphWidth =firstNode.current.offsetWidth;
   const carouselOffset = -paragraphWidth * activeId;
   const transformStyle = {
-    transform: `translateX(${carouselOffset}vw)`,
+    transform: `translateX(${carouselOffset}px)`,
   };
-  console.log(transformStyle);
-  const paragraphNodes = paragraphs.map((paragraph, index) => (
-    <p dangerouslySetInnerHTML={{__html: paragraph}} className={styles.paragraph}></p>
-  ));
   useEffect(() => {
     const interval = setTimeout(() => {
       if (activeId !== carouselCount - 1) {
@@ -20,7 +20,7 @@ const TextCarousel = ({ paragraphs }) => {
       } else {
         setActiveId(0);
       }
-    }, 4000);
+    }, 40000);
     return () => clearTimeout(interval);
   }, [activeId]);
   return (
