@@ -11,7 +11,7 @@ const TextCarousel = ({ paragraphs }) => {
   };
   console.log(transformStyle);
   const paragraphNodes = paragraphs.map((paragraph, index) => (
-    <p className={styles.paragraph}>{paragraph}</p>
+    <p dangerouslySetInnerHTML={{__html: paragraph}} className={styles.paragraph}></p>
   ));
   useEffect(() => {
     const interval = setTimeout(() => {
