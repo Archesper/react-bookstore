@@ -1,5 +1,4 @@
 import styles from "./Hero.module.css";
-import heroImage from "../../assets/images/hero-image.jpg";
 import heroBackground from "../../assets/images/hero-background.jpg";
 import TextCarousel from "../TextCarousel/TextCarousel";
 import EastIcon from "@mui/icons-material/East";
