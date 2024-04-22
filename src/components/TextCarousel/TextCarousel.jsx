@@ -3,6 +3,17 @@ import styles from "./TextCarousel.module.css";
 
 const TextCarousel = ({ paragraphs }) => {
   const firstNode = useRef(null);
+  useEffect(() => {
+    const updateWidth = () => {
+      if (firstNode.current) {
+        setParagraphWidth(firstNode.current.offsetWidth);
+      }
+    }
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+
+    return () => window.removeEventListener('resize', updateWidth);
+  }, [firstNode.current]);
   const paragraphNodes = paragraphs.map((paragraph, index) => (
     <p {...(index === 0 ? {ref: firstNode} : {})} key={index} dangerouslySetInnerHTML={{__html: paragraph}} className={styles.paragraph}></p>
   ));
@@ -13,11 +24,6 @@ const TextCarousel = ({ paragraphs }) => {
   const transformStyle = {
     transform: `translateX(${carouselOffset}px)`,
   };
-  useEffect(() => {
-    if (firstNode.current) {
-      setParagraphWidth(firstNode.current.offsetWidth);
-    }
-  }, [firstNode.current.offsetWidth]);
   useEffect(() => {
     const interval = setTimeout(() => {
       if (activeId !== carouselCount - 1) {
@@ -35,7 +41,7 @@ const TextCarousel = ({ paragraphs }) => {
       </div>
       <div className={styles["carousel-controls"]}>
         {paragraphs.map((paragraph, index) => (
-          <div className={styles["carousel-control"] + (activeId === index ? ` ${styles["active-control"]}` : "")} onClick={() => setActiveId(index)}>
+          <div key={index} className={styles["carousel-control"] + (activeId === index ? ` ${styles["active-control"]}` : "")} onClick={() => setActiveId(index)}>
             <div className={styles["control-inner-ring"]}></div>
           </div>
         ))}
