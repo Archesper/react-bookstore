@@ -1,18 +1,22 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import styles from "./ProductInput.module.css";
 
 const ProductInput = ({ updateCart, productData, className = '' }) => {
   const {cartData} = useOutletContext();
   const cartItem = cartData.find((item) => item.id === productData.id);
-  const inputValue = cartItem ? cartItem.quantity : undefined
-  const [inCart, setInCart] = useState(inputValue);
+  const inputValue = cartItem ? cartItem.quantity : 0;
+  const [inCart, setInCart] = useState(cartItem);
+  useEffect(() => {
+    if (!cartItem) {
+      setInCart(false);
+    }
+  }, [cartItem])
   const updateInputValue = (value) => {
     if (parseInt(value) === 0) {
       setInCart(false);
     }
-    const sanitizedValue = value.toString().replaceAll(/\D/g, '');
-    updateCart(productData, parseInt(sanitizedValue));
+    updateCart(productData, parseInt(value));
   };
   if (inCart) {
     return (
