@@ -2,9 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../App";
 import Cart from "../Cart/Cart";
 import Modal from "../Modal/Modal";
-import Fetcher from "../Fetcher/Fetcher";
 import PostFetchRenderer from "../PostFetchRenderer/PostFetchRenderer";
-import AboutUs from "../AboutUs/AboutUs";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -23,7 +21,7 @@ const Router = () => {
             </>
           ),
         },
-        { path: "/aboutus"}
+        { path: "/aboutus" },
       ],
     },
   ]);
