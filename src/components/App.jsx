@@ -29,10 +29,8 @@ function App() {
     } else {
       setCartData([...cartData, { ...item, quantity: quantity }]);
     }
-    console.log(cartData);
   };
   const { pathname } = useLocation();
-  console.log(pathname);
 
   const routeMap = { "/shop": "shop", "/": "home", "/aboutus": "about us" };
   const activeLink = routeMap[pathname];
@@ -48,7 +46,7 @@ function App() {
         )}
       />
       <main>
-        {(pathname === "/" || pathname === "/aboutus") && <Hero/>}
+        {(pathname === "/" || pathname === "/aboutus") && <Hero />}
         <Outlet
           context={{
             updateCart: updateCart,

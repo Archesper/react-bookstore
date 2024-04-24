@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import no_cover_found from "../../assets/images/no_cover_found.png";
-import styles from "./Fetcher.module.css"
+import styles from "./Fetcher.module.css";
 import CardWrapper from "../CardWrapper/CardWrapper";
 
 const Fetcher = ({ setProductData, productData }) => {
@@ -73,7 +73,6 @@ const Fetcher = ({ setProductData, productData }) => {
           data.push({ id, title, image, authorName, price });
           authorCounts[authorName] += 1;
         } else if (!saturatedAuthors.includes(authorName)) {
-          console.log(authorName);
           saturatedAuthors.push(authorName);
         }
         return true;
@@ -85,10 +84,12 @@ const Fetcher = ({ setProductData, productData }) => {
   }, [loading]);
   if (loading) return <CardWrapper isLoading={true} />;
   if (error) {
-    return <div className={styles.error}>
-      <h2>{error}</h2>
-      <button onClick={() => setLoading(true)}> Try Again</button>
-    </div>
+    return (
+      <div className={styles.error}>
+        <h2>{error}</h2>
+        <button onClick={() => setLoading(true)}> Try Again</button>
+      </div>
+    );
   }
 };
 
