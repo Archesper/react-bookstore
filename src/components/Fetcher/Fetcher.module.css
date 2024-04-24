@@ -1,0 +1,27 @@
+.error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid #ED553B;
+  border-radius: 8px;
+}
+
+.error h2 {
+  font-size: 36px;
+  color: #ED553B;
+}
+
+.error button {
+  font-size: 20px;
+  width: 80%;
+  border: 1px solid #ED553B;
+  padding: 4px;
+  background-color: white;
+  cursor: pointer;
+}

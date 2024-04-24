@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import no_cover_found from "../../assets/images/no_cover_found.png";
+import styles from "./Fetcher.module.css"
 import CardWrapper from "../CardWrapper/CardWrapper";
 
 const Fetcher = ({ setProductData, productData }) => {
   const [loading, setLoading] = useState(!productData.length);
-  console.log(loading);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     if (!loading) {
       return;
@@ -35,8 +34,19 @@ const Fetcher = ({ setProductData, productData }) => {
         ""
       );
       const requestUrl = `https://openlibrary.org/search.json?q=author:(${authorString}) language:eng&fields=key,title,author_name,editions,cover_i&limit=500`;
-      const response = await fetch(requestUrl);
-      const json = await response.json();
+      let response;
+      let json;
+      try {
+        response = await fetch(requestUrl);
+        json = await response.json();
+      } catch (error) {
+        setError("Request failed.");
+        setLoading(false);
+      }
+      if (response && !response.ok) {
+        setError(`Request failed.`);
+        setLoading(false);
+      }
       const authorMaxCounts = authors.reduce((resultObject, author) => {
         resultObject[author] = Math.floor(Math.random() * 3) + 2;
         return resultObject;
@@ -72,9 +82,14 @@ const Fetcher = ({ setProductData, productData }) => {
       setProductData(shuffledData);
     };
     fetchData();
-  }, []);
+  }, [loading]);
   if (loading) return <CardWrapper isLoading={true} />;
-  if (error) return "Error!";
+  if (error) {
+    return <div className={styles.error}>
+      <h2>{error}</h2>
+      <button onClick={() => setLoading(true)}> Try Again</button>
+    </div>
+  }
 };
 
 export default Fetcher;
