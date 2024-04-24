@@ -7,6 +7,7 @@ const ProductInput = ({ updateCart, productData, className = '' }) => {
   const cartItem = cartData.find((item) => item.id === productData.id);
   const inputValue = cartItem ? cartItem.quantity : 0;
   const [inCart, setInCart] = useState(cartItem);
+  // This effect is for synchronizing between ProductInput components in the Card and Cart components
   useEffect(() => {
     if (!cartItem) {
       setInCart(false);
