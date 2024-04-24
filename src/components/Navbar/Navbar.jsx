@@ -6,7 +6,7 @@ const Navbar = ({ links, activeLink, itemCount, onIconClick }) => {
   console.log(activeLink);
   const linkItems = links.map((link, index) => (
     <li key={index}>
-      <Link {...{id: link === activeLink ? styles.active : ""}} to={link.toLowerCase() === "home" ? "/" : link.toLowerCase()}>{link}</Link>
+      <Link {...{id: link === activeLink ? styles.active : ""}} to={link.toLowerCase() === "home" ? "/" : link.toLowerCase().replaceAll(' ', '')}>{link}</Link>
     </li>
   ));
   return (
