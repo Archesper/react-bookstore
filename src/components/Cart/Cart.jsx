@@ -18,7 +18,7 @@ const Cart = () => {
     >
       <div className={styles.frame}>
         <ItemCount className={styles["item-count"]} count={cartItem.quantity}/>
-        <img src={cartItem.image} alt={cartItem.description} />
+        <img src={cartItem.image} alt={cartItem.title} />
       </div>
       <div className={styles["cart-item-header"]}>
         <h3 className={styles.title}>{cartItem.title}</h3>

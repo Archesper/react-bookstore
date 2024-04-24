@@ -16,14 +16,14 @@ describe("UI tests", () => {
           id: 1,
           image: "https://via.placeholder.com/200/92c952",
           title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
+          author: "Lorem Ipsumly lorem ipsum",
           price: 70,
         },
         {
           id: 2,
           image: "https://via.placeholder.com/200/92c952",
           title: "Lorem Ipsum",
-          description: "Lorem Ipsumly lorem ipsum",
+          author: "Lorem Ipsumly lorem ipsum",
           price: 75,
         },
       ];
